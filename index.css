@@ -1,0 +1,50 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* typography and icons */
+
+h1 {
+  color: #0f8cdf;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+/* layout */
+main, header {
+  width: 290px;
+  margin: 0 auto;
+}
+
+header {
+  padding-bottom: 25px;
+}
+
+.tweet-input-area {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* textareas + btn */
+button {
+  background-color: #1da1f2;
+  border: none;
+  color: white;
+  padding: 10px 19px;
+  border-radius: 20px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* images */
+
+.profile-pic {
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  width: 3rem;
+}
