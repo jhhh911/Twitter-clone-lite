@@ -29,6 +29,18 @@ header {
 }
 
 /* textareas + btn */
+textarea {
+  border: none;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  height: 60px;
+  width: 100%;
+  font-size: 20px;
+  line-height: 30px;
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+}
+
 button {
   background-color: #1da1f2;
   border: none;
