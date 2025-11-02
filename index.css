@@ -53,6 +53,32 @@ button {
   font-weight: 600;
 }
 
+/* tweet */
+.tweet {
+  border-top: 1px solid lightgray;
+  padding: 20px 0 0 0;
+  width: 100%;
+  margin: 15px 0;
+}
+
+.tweet-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tweet-details {
+  display: flex;
+  font-size: 13px;
+  justify-content: space-between;
+  width: 160px;
+}
+
+.tweet-detail {
+  display: flex;
+  gap: 4px;
+}
+
 /* images */
 
 .profile-pic {
