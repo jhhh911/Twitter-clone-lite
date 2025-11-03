@@ -30,6 +30,7 @@ i {
 }
 
 /* layout */
+
 main, header {
   width: 290px;
   margin: 0 auto;
@@ -46,8 +47,10 @@ header {
 }
 
 /* textareas + btn */
+
 textarea {
   border: none;
+  resize: none;
   padding: 10px;
   margin: 0 0 20px 0;
   height: 60px;
@@ -55,7 +58,6 @@ textarea {
   font-size: 20px;
   line-height: 30px;
   font-family: 'Roboto', sans-serif;
-  resize: none;
 }
 
 button {
@@ -71,6 +73,7 @@ button {
 }
 
 /* tweet */
+
 .tweet {
   border-top: 1px solid lightgray;
   padding: 20px 0 0 0;
@@ -96,10 +99,35 @@ button {
   gap: 4px;
 }
 
+.tweet-reply {
+  border-top: 1px solid lightgray;
+  padding: 20px 0 0 0;
+  margin: 10px 0 10px 40px;
+  width: 80%;
+}
+
+.handle {
+  font-size: 12px;
+  font-weight: 500;
+  color: #555;
+  margin-top: 0;
+}
+
+.tweet-text {
+  width: 207px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 /* images */
 
 .profile-pic {
   border: 1px solid lightgray;
   border-radius: 50%;
   width: 3rem;
+}
+
+/* utility */
+.hidden{
+    display: none;
 }
