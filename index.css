@@ -12,6 +12,23 @@ h1 {
   font-size: 20px;
 }
 
+i {
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.fa-solid {
+  color: #999;
+}
+
+.liked {
+  color: red;
+}
+
+.retweeted {
+  color: limegreen;
+}
+
 /* layout */
 main, header {
   width: 290px;
