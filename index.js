@@ -1,7 +1,8 @@
 import { tweetsData } from "./data.js";
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
+console.log(uuidv4())
 
 const tweetInput = document.getElementById("tweet-input");
-const tweetBtn = document.getElementById("tweet-btn");
 
 
 document.addEventListener("click", function (e) {
@@ -56,7 +57,7 @@ function handleTweetBtnClick() {
         replies: [],
         isLiked: false,
         isRetweeted: false,
-        uuid: `${tweetsData.length}`,
+        uuid: `${uuidv4()}`,
   })
   tweetInput.value = ''
   render()
