@@ -2,6 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  position: relative;
 }
 
 /* typography and icons */
@@ -117,6 +118,18 @@ button {
   width: 207px;
   font-size: 14px;
   line-height: 20px;
+}
+
+/* comment box */
+.comment-box {
+  border: 1px solid black;
+  font-size: 12px;
+}
+
+.post-comment {
+  font-size: 11px;
+  margin-bottom: 20px;
+  width: 50%;
 }
 
 /* images */
