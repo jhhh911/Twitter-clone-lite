@@ -170,21 +170,23 @@ function openCommentBox(tweetId) {
 
 function postComment(tweetId) {
   tweetsData.forEach(tweet => {
+    const commentBtn = document.getElementById(`comment-box-${tweet.uuid}`)
     if (tweet.uuid === tweetId) {
+      if(commentBtn.value > 0) {
       tweet.replies.push(
-        
-        {
-      handle: "@Scrimba",
-      profilePic: `images/scrimbalogo.png`,
-      likes: 0,
-      retweets: 0,
-      tweetText: document.getElementById(`comment-box-${tweet.uuid}`).value,
-      replies: [],
-      isLiked: false,
-      isRetweeted: false,
-      uuid: `${uuidv4()}`,
-    }
-      );
+          {
+            handle: "@Scrimba",
+            profilePic: `images/scrimbalogo.png`,
+            likes: 0,
+            retweets: 0,
+            tweetText: document.getElementById(`comment-box-${tweet.uuid}`).value,
+            replies: [],
+            isLiked: false,
+            isRetweeted: false,
+            uuid: `${uuidv4()}`,
+          }
+        );
+      }
       render()
     }
   });
