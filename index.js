@@ -1,16 +1,8 @@
 import { tweetsData } from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
-// let savedReplyData = JSON.parse(localStorage.getItem("tweetReplies"));
 let savedFeedData = JSON.parse(localStorage.getItem("feed"));
 let feedData = tweetsData;
-
-// feedData.forEach(tweet => {
-//   if (savedReplyData) {
-//     tweet.replies += savedReplyData
-//     render()
-//   }
-// });
 
 if (savedFeedData) {
   feedData = savedFeedData;
@@ -30,6 +22,8 @@ document.addEventListener("click", function (e) {
     openCommentBox(e.target.dataset.comment);
   } else if (e.target.dataset.post) {
     postComment(e.target.dataset.post);
+  } else if(e.target.dataset.delete) {
+    deleteComment(e.target.dataset.delete)
   }
 });
 
@@ -144,6 +138,9 @@ function getFeedHtml() {
                 <span class='tweet-detail'>
                 <i class="fa-solid fa-reply ${commentIconClass}" data-comment="${tweet.uuid}" title="reply"></i>
                 </span>
+                <span class="tweet-detail">
+                <i class="fa-solid fa-trash" data-delete="${tweet.uuid}" title="delete tweet"></i>
+                </span>
             </div> 
         </div>            
     </div>
@@ -187,7 +184,7 @@ function openCommentBox(tweetId) {
 }
 
 function postComment(tweetId) {
-  tweetsData.forEach(tweet => {
+  feedData.forEach(tweet => {
     const commentBtn = document.getElementById(`comment-box-${tweet.uuid}`);
     if (commentBtn.value.length > 0) {
       if (tweet.uuid === tweetId) {
@@ -202,14 +199,18 @@ function postComment(tweetId) {
           isRetweeted: false,
           uuid: `${uuidv4()}`,
         });
-        // localStorage.setItem("tweetReplies", JSON.stringify(tweet.replies));
         render();
       }
     }
   });
 }
 
-// Stretch goals
-// 1. be able to reply to a specific tweet
-// 2. Save tweets to localStorage
-// 3. delete tweets
+function deleteComment(tweetId) {
+  feedData.forEach(tweet => {
+    if(tweet.uuid === tweetId) {
+      feedData.shift(tweet)
+      render()
+    }
+  })
+}
+
