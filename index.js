@@ -1,7 +1,6 @@
 import { tweetsData } from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
-
 document.addEventListener("click", function (e) {
   if (e.target.dataset.reply) {
     handleReplyClick(e.target.dataset.reply);
@@ -12,7 +11,9 @@ document.addEventListener("click", function (e) {
   } else if (e.target.dataset.button) {
     handleTweetBtnClick();
   } else if (e.target.dataset.comment) {
-    openCommentBox(e.target.dataset.comment)
+    openCommentBox(e.target.dataset.comment);
+  } else if (e.target.dataset.post) {
+    postComment(e.target.dataset.post);
   }
 });
 
@@ -65,7 +66,6 @@ function handleTweetBtnClick() {
   }
 }
 
-
 function getFeedHtml() {
   let feedHtml = "";
 
@@ -82,7 +82,7 @@ function getFeedHtml() {
       retweetIconClass = "retweeted";
     }
 
-    let commentIconClass = ''
+    let commentIconClass = "";
 
     let repliesHtml = "";
 
@@ -110,7 +110,7 @@ function getFeedHtml() {
             <p class="handle">${tweet.handle}</p>
             <p class="tweet-text">${tweet.tweetText}</p>
             <textarea class="comment-box hidden" id='comment-box-${tweet.uuid}' placeholder='Write comment here'></textarea>
-            <button class='post-comment hidden' id='post-comment-${tweet.uuid}'>post comment</button>
+            <button class='post-comment hidden' id='post-comment-${tweet.uuid}' data-post='${tweet.uuid}'>post comment</button>
             <div class="tweet-details">
                 <span class="tweet-detail">
                 <i class="fa-regular fa-comment-dots" data-reply="${tweet.uuid}" title="view comments"></i>
@@ -158,14 +158,39 @@ function handleReplyClick(replyId) {
 function openCommentBox(tweetId) {
   tweetsData.forEach(tweet => {
     if (tweet.uuid === tweetId) {
-      document.getElementById(`comment-box-${tweet.uuid}`).classList.toggle('hidden')
-      document.getElementById(`post-comment-${tweet.uuid}`).classList.toggle('hidden')
+      document
+        .getElementById(`comment-box-${tweet.uuid}`)
+        .classList.toggle("hidden");
+      document
+        .getElementById(`post-comment-${tweet.uuid}`)
+        .classList.toggle("hidden");
     }
-  })
+  });
+}
+
+function postComment(tweetId) {
+  tweetsData.forEach(tweet => {
+    if (tweet.uuid === tweetId) {
+      tweet.replies.push(
+        
+        {
+      handle: "@Scrimba",
+      profilePic: `images/scrimbalogo.png`,
+      likes: 0,
+      retweets: 0,
+      tweetText: document.getElementById(`comment-box-${tweet.uuid}`).value,
+      replies: [],
+      isLiked: false,
+      isRetweeted: false,
+      uuid: `${uuidv4()}`,
+    }
+      );
+      render()
+    }
+  });
 }
 
 // Stretch goals
 // 1. be able to reply to a specific tweet
 // 2. Save tweets to localStorage
 // 3. delete tweets
-
